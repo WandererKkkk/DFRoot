@@ -1,0 +1,23 @@
+name: Run Build Script
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    # 1. Fetch your repository code onto the GitHub runner
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    # 2. Grant execution permissions and run the script
+    - name: Run build script
+      run: |
+        chmod +x build.sh
+        ./build.sh
+        
